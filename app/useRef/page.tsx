@@ -1,0 +1,24 @@
+"use client";
+
+import { useRef, useEffect, useState } from "react";
+
+export default function Page() {
+  const refUsername = useRef<HTMLInputElement>(null);
+  const [username, setUsername] = useState("");
+  useEffect(() => {
+    refUsername.current?.focus();
+  }, []);
+  return (
+    <div>
+      <input
+        ref={refUsername}
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <div>
+        <p>Username: {username}</p>
+      </div>
+    </div>
+  );
+}
